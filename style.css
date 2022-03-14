@@ -12,13 +12,41 @@ body {
   display: grid;
   justify-content: center;
   align-content: center;
-  grid-template-columns: repeat(4, 50px);
-  grid-template-rows: minmax(120px, auto) repeat(5, 50px);
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: minmax(110px, auto) repeat(5, 70px);
+}
+#equal {
+  grid-column: span 2;
 }
 .dispaly_area {
   grid-column: span 4;
   background-color: rgb(64, 85, 85);
+  text-align: right;
+  padding: 7px;
+  color: rgb(5, 20, 32);
+  border-top: 25px solid gray;
+  border-right: 5px solid gray;
+  border-left: 5px solid gray;
+  border-bottom: 2px solid gray;
+  border-radius: 5px 5px 0 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
-#equal {
-  grid-column: span 2;
+.previous_operand {
+  font-size: 30px;
+}
+.current_operand {
+  font-size: 40px;
+}
+button {
+  font-size: 25px;
+  background-color: rgb(80, 78, 78);
+  color: aliceblue;
+  border: 2px solid gray;
+  border-radius: 2px;
+}
+button:hover {
+  font-size: 25px;
+  background-color: rgb(65, 63, 63);
+  color: aliceblue;
 }
