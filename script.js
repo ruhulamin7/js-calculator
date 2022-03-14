@@ -16,7 +16,9 @@ function appendNumber(number) {
 
 numberButtons.forEach((btn) => {
   btn.addEventListener("click", function () {
-    if (btn.innerText === "." && currentOperand.includes(".")) return;
+    if (btn.innerText === "." && currentOperand.includes(".")) {
+      return;
+    }
     appendNumber(btn.innerText);
     updateDisplay();
   });
