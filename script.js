@@ -9,21 +9,94 @@ const operatorButtons = document.querySelectorAll(".operator");
 
 let previousOperand = "";
 let currentOperand = "";
+let operator = "";
+
+function formatNumber(num) {
+  return Number(num).toLocaleString("en");
+}
+function updateDisplay() {
+  currentOperandElement.innerHTML = formatNumber(currentOperand);
+  previousOperandElement.innerHTML = `${formatNumber(
+    previousOperand
+  )}${operator}`;
+}
 
 function appendNumber(number) {
   currentOperand += number;
 }
 
+function choseOperator(op) {
+  if (previousOperand) {
+    previousOperand = calculation();
+  } else {
+    previousOperand = currentOperand;
+  }
+  operator = op;
+  currentOperand = "";
+}
+
+function calculation() {
+  switch (operator) {
+    case "÷":
+      return Number(previousOperand) / Number(currentOperand);
+    case "*":
+      return Number(previousOperand) * Number(currentOperand);
+    case "+":
+      return Number(previousOperand) + Number(currentOperand);
+    case "-":
+      return Number(previousOperand) - Number(currentOperand);
+    case "%":
+      return Number(previousOperand) % Number(currentOperand);
+  }
+}
+
+// select numbers
 numberButtons.forEach((btn) => {
   btn.addEventListener("click", function () {
-    if (btn.innerText === "." && currentOperand.includes(".")) {
-      return;
-    }
+    if (btn.innerText === "." && currentOperand.includes(".")) return;
     appendNumber(btn.innerText);
     updateDisplay();
   });
 });
 
-function updateDisplay() {
-  currentOperandElement.innerText = currentOperand;
-}
+// select operator buttons
+operatorButtons.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    if (!currentOperand) return;
+    choseOperator(btn.innerText);
+    updateDisplay();
+  });
+});
+
+// equal calculation
+equalButton.addEventListener("click", function () {
+  if (!previousOperand) return;
+
+  if (currentOperand) {
+    currentOperand = calculation();
+  } else {
+    currentOperand = previousOperand;
+  }
+  previousOperand = "";
+  operator = "";
+  updateDisplay();
+  currentOperand = "";
+
+  // let numOperator = Number(operator);
+  // let numPreviousOperand = Number(previousOperand);
+  // let numCurrentOperand = Number(currentOperand);
+  // let result = numPreviousOperand + numCurrentOperand;
+  // currentOperandElement.innerText = result;
+});
+
+acButton.addEventListener("click", function () {
+  previousOperand = "";
+  currentOperand = "";
+  operator = "";
+  updateDisplay();
+});
+
+delButton.addEventListener("click", function () {
+  currentOperand = currentOperand.slice(0, -1);
+  updateDisplay();
+});

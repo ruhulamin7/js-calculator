@@ -8,12 +8,12 @@ body {
 }
 .calculator_container {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   justify-content: center;
   align-content: center;
   grid-template-columns: repeat(4, 70px);
-  grid-template-rows: minmax(110px, auto) repeat(5, 70px);
+  grid-template-rows: minmax(130px, auto) repeat(5, 70px);
 }
 #equal {
   grid-column: span 2;
@@ -29,14 +29,24 @@ body {
   border-left: 5px solid gray;
   border-bottom: 2px solid gray;
   border-radius: 5px 5px 0 0;
+  width: 100%;
+
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
 .previous_operand {
   font-size: 30px;
+  word-break: break-all;
+  /* word-wrap: break-word; */
+  height: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .current_operand {
   font-size: 40px;
+  word-break: break-all;
+  height: 50%;
 }
 button {
   font-size: 25px;
