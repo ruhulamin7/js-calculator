@@ -12,7 +12,12 @@ let currentOperand = "";
 let operator = "";
 
 function formatNumber(num) {
-  return Number(num).toLocaleString("en");
+  const result = Number(num).toLocaleString("en");
+  if (result !== "0") {
+    return result;
+  } else {
+    return "";
+  }
 }
 function updateDisplay() {
   currentOperandElement.innerHTML = formatNumber(currentOperand);
@@ -81,12 +86,6 @@ equalButton.addEventListener("click", function () {
   operator = "";
   updateDisplay();
   currentOperand = "";
-
-  // let numOperator = Number(operator);
-  // let numPreviousOperand = Number(previousOperand);
-  // let numCurrentOperand = Number(currentOperand);
-  // let result = numPreviousOperand + numCurrentOperand;
-  // currentOperandElement.innerText = result;
 });
 
 acButton.addEventListener("click", function () {
