@@ -85,7 +85,6 @@ equalButton.addEventListener("click", function () {
   previousOperand = "";
   operator = "";
   updateDisplay();
-  currentOperand = "";
 });
 
 acButton.addEventListener("click", function () {
