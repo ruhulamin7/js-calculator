@@ -40,6 +40,7 @@ function choseOperator(op) {
   currentOperand = "";
 }
 
+// main calculation
 function calculation() {
   switch (operator) {
     case "÷":
